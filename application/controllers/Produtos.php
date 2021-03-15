@@ -1,12 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Produtos extends CI_Controller
+class Produtos extends My_Controller
 {
     public function index($page=0)
     {
         $this->load->library('pagination');
         $this->load->database();
+        $this->require_min_level(1);
 
         $produtos = $this->db->get('produtos', 5, $page)->result();
 
