@@ -10,7 +10,12 @@ function active($item, $uri) {
     <div id="navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
         <li <?=active('', $this->uri)?>><a href="/codeigniterapp/index.php">Home</a></li>
-        <li <?=active('clientes', $this->uri)?>><a href="/codeigniterapp/index.php/clientes">Clientes</a></li>
+
+        <?php if ($auth_role == 'admin') : ?>
+            <li <?=active('clientes', $this->uri)?>><a href="/codeigniterapp/index.php/clientes">Clientes</a></li>
+
+        <?php endif ?>
+
         <li <?=active('produtos', $this->uri)?>><a href="/codeigniterapp/index.php/produtos">Produtos</a></li>
     </ul>
 
