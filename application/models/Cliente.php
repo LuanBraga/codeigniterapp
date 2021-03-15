@@ -7,6 +7,7 @@ class Cliente extends CI_Model
     {
         parent:: __construct();
         $this->load->database();
+        
     }
 
     public function get($id)
@@ -49,5 +50,14 @@ class Cliente extends CI_Model
     public function getCadastradoEm()
     {
         return date('d/m/Y', strtotime($this->cadastrado_em));
+    }
+
+    public function search($string)
+    {
+        $clientes = $this->db->like('nome', $string)
+                                ->or_like('email', $string)
+                                ->get($this->table);
+
+        return $clientes->result_array();
     }
 }
