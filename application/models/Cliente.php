@@ -56,6 +56,7 @@ class Cliente extends CI_Model
     {
         $clientes = $this->db->like('nome', $string)
                                 ->or_like('email', $string)
+                                ->or_like('id', $string)
                                 ->get($this->table);
 
         return $clientes->result_array();
